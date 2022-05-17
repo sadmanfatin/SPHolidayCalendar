@@ -1,0 +1,24 @@
+#OS Cruft
+.DS_Store
+Thumbs.db
+
+# Compiled class file
+# Log files
+*.log
+
+# Archives
+*.war
+*.ear
+# Misc
+*.sso
+.data
+.jdb
+# Unwanted directories
+classes/
+deploy/
+*.cdi_javac
+Model/classes/
+ViewController/classes/
+Model/classes/.data/Model.cdi_javac
+
+
