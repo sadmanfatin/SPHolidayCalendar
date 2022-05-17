@@ -38,7 +38,7 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
                                  String respApplId) {
        
         
-       
+       orgId = "340";
         FacesContext fctx = FacesContext.getCurrentInstance();
         ExternalContext ectx = fctx.getExternalContext();
         HttpSession userSession = (HttpSession)ectx.getSession(false);
