@@ -1,7 +1,7 @@
 package model.view;
 
-import model.entity.WpHolidayCalendarEOImpl;
-import model.entity.WpMonthListEOImpl;
+import model.entity.SpCalendarLEOImpl;
+import model.entity.SpCalendarHEOImpl;
 
 import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
@@ -16,7 +16,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class WpMonthListVORowImpl extends ViewRowImpl {
+public class SpCalendarHVORowImpl extends ViewRowImpl {
     
     private void setHolidayCalendarWeeklyHoliday(String value) {
         
@@ -24,12 +24,12 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
         
         Row[]   holidayCalendarRows = this.getWpHolidayCalendarVO().getAllRowsInRange();
         
-        WpHolidayCalendarVORowImpl holidayCalendarRow ; 
+        SpCalendarLVORowImpl holidayCalendarRow ; 
         String holidayDesc = null;
         String dayValue= null;
         String workingStaus = null;
         for   ( Row  row :  holidayCalendarRows){
-            holidayCalendarRow = (WpHolidayCalendarVORowImpl)row;        
+            holidayCalendarRow = (SpCalendarLVORowImpl)row;        
             holidayDesc = holidayCalendarRow.getHolidayDescription();
             dayValue  =    holidayCalendarRow.getDayName();
             workingStaus = holidayCalendarRow.getWorkingStatus();
@@ -63,10 +63,10 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
             
         int totalDaysCount = 0  ,  holidayCount = 0, workingdayCount = 0;
         RowIterator rs  = this.getWpHolidayCalendarVO();
-        WpHolidayCalendarVORowImpl row;
+        SpCalendarLVORowImpl row;
         
         while(rs.hasNext()) {
-            row = (WpHolidayCalendarVORowImpl)rs.next();
+            row = (SpCalendarLVORowImpl)rs.next();
             
             totalDaysCount++;
             
@@ -99,121 +99,121 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
      */
     public enum AttributesEnum {
         MonthId {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getMonthId();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setMonthId((Number)value);
             }
         }
         ,
         MonthName {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getMonthName();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setMonthName((String)value);
             }
         }
         ,
         Year {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getYear();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setYear((Number)value);
             }
         }
         ,
         OrgId {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getOrgId();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setOrgId((Number)value);
             }
         }
         ,
         WeeklyHoliday {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getWeeklyHoliday();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setWeeklyHoliday((String)value);
             }
         }
         ,
         NumberOfDays {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getNumberOfDays();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setNumberOfDays((Number)value);
             }
         }
         ,
         NomberOfWorkingDays {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getNomberOfWorkingDays();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setNomberOfWorkingDays((Number)value);
             }
         }
         ,
         NumberOfHolidays {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getNumberOfHolidays();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setNumberOfHolidays((Number)value);
             }
         }
         ,
         WpHolidayCalendarVO {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getWpHolidayCalendarVO();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setAttributeInternal(index(), value);
             }
         }
         ,
         HolidayCalendarSearchVO {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getHolidayCalendarSearchVO();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setAttributeInternal(index(), value);
             }
         }
         ,
         DayLOV1 {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getDayLOV1();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setAttributeInternal(index(), value);
             }
         }
         ,
         UintWiseWeeklyHolidayLOV1 {
-            public Object get(WpMonthListVORowImpl obj) {
+            public Object get(SpCalendarHVORowImpl obj) {
                 return obj.getUintWiseWeeklyHolidayLOV1();
             }
 
-            public void put(WpMonthListVORowImpl obj, Object value) {
+            public void put(SpCalendarHVORowImpl obj, Object value) {
                 obj.setAttributeInternal(index(), value);
             }
         }
@@ -221,12 +221,12 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
         private static AttributesEnum[] vals = null;
         private static int firstIndex = 0;
 
-        public abstract Object get(WpMonthListVORowImpl object);
+        public abstract Object get(SpCalendarHVORowImpl object);
 
-        public abstract void put(WpMonthListVORowImpl object, Object value);
+        public abstract void put(SpCalendarHVORowImpl object, Object value);
 
         public int index() {
-            return AttributesEnum.firstIndex() + ordinal();
+            return SpCalendarHVORowImpl.AttributesEnum.firstIndex() + ordinal();
         }
 
         public static int firstIndex() {
@@ -234,43 +234,43 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
         }
 
         public static int count() {
-            return AttributesEnum.firstIndex() + AttributesEnum.staticValues().length;
+            return SpCalendarHVORowImpl.AttributesEnum.firstIndex() + SpCalendarHVORowImpl.AttributesEnum.staticValues().length;
         }
 
         public static AttributesEnum[] staticValues() {
             if (vals == null) {
-                vals = AttributesEnum.values();
+                vals = SpCalendarHVORowImpl.AttributesEnum.values();
             }
             return vals;
         }
     }
 
 
-    public static final int MONTHID = AttributesEnum.MonthId.index();
-    public static final int MONTHNAME = AttributesEnum.MonthName.index();
-    public static final int YEAR = AttributesEnum.Year.index();
-    public static final int ORGID = AttributesEnum.OrgId.index();
-    public static final int WEEKLYHOLIDAY = AttributesEnum.WeeklyHoliday.index();
-    public static final int NUMBEROFDAYS = AttributesEnum.NumberOfDays.index();
-    public static final int NOMBEROFWORKINGDAYS = AttributesEnum.NomberOfWorkingDays.index();
-    public static final int NUMBEROFHOLIDAYS = AttributesEnum.NumberOfHolidays.index();
-    public static final int WPHOLIDAYCALENDARVO = AttributesEnum.WpHolidayCalendarVO.index();
-    public static final int HOLIDAYCALENDARSEARCHVO = AttributesEnum.HolidayCalendarSearchVO.index();
-    public static final int DAYLOV1 = AttributesEnum.DayLOV1.index();
-    public static final int UINTWISEWEEKLYHOLIDAYLOV1 = AttributesEnum.UintWiseWeeklyHolidayLOV1.index();
+    public static final int MONTHID = SpCalendarHVORowImpl.AttributesEnum.MonthId.index();
+    public static final int MONTHNAME = SpCalendarHVORowImpl.AttributesEnum.MonthName.index();
+    public static final int YEAR = SpCalendarHVORowImpl.AttributesEnum.Year.index();
+    public static final int ORGID = SpCalendarHVORowImpl.AttributesEnum.OrgId.index();
+    public static final int WEEKLYHOLIDAY = SpCalendarHVORowImpl.AttributesEnum.WeeklyHoliday.index();
+    public static final int NUMBEROFDAYS = SpCalendarHVORowImpl.AttributesEnum.NumberOfDays.index();
+    public static final int NOMBEROFWORKINGDAYS = SpCalendarHVORowImpl.AttributesEnum.NomberOfWorkingDays.index();
+    public static final int NUMBEROFHOLIDAYS = SpCalendarHVORowImpl.AttributesEnum.NumberOfHolidays.index();
+    public static final int WPHOLIDAYCALENDARVO = SpCalendarHVORowImpl.AttributesEnum.WpHolidayCalendarVO.index();
+    public static final int HOLIDAYCALENDARSEARCHVO = SpCalendarHVORowImpl.AttributesEnum.HolidayCalendarSearchVO.index();
+    public static final int DAYLOV1 = SpCalendarHVORowImpl.AttributesEnum.DayLOV1.index();
+    public static final int UINTWISEWEEKLYHOLIDAYLOV1 = SpCalendarHVORowImpl.AttributesEnum.UintWiseWeeklyHolidayLOV1.index();
 
     /**
      * This is the default constructor (do not remove).
      */
-    public WpMonthListVORowImpl() {
+    public SpCalendarHVORowImpl() {
     }
 
     /**
      * Gets WpMonthListEO entity object.
      * @return the WpMonthListEO
      */
-    public WpMonthListEOImpl getWpMonthListEO() {
-        return (WpMonthListEOImpl)getEntity(0);
+    public SpCalendarHEOImpl getWpMonthListEO() {
+        return (SpCalendarHEOImpl)getEntity(0);
     }
 
     /**
@@ -462,8 +462,8 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
      */
     protected Object getAttrInvokeAccessor(int index,
                                            AttributeDefImpl attrDef) throws Exception {
-        if ((index >= AttributesEnum.firstIndex()) && (index < AttributesEnum.count())) {
-            return AttributesEnum.staticValues()[index - AttributesEnum.firstIndex()].get(this);
+        if ((index >= SpCalendarHVORowImpl.AttributesEnum.firstIndex()) && (index < SpCalendarHVORowImpl.AttributesEnum.count())) {
+            return SpCalendarHVORowImpl.AttributesEnum.staticValues()[index - SpCalendarHVORowImpl.AttributesEnum.firstIndex()].get(this);
         }
         return super.getAttrInvokeAccessor(index, attrDef);
     }
@@ -478,8 +478,8 @@ public class WpMonthListVORowImpl extends ViewRowImpl {
      */
     protected void setAttrInvokeAccessor(int index, Object value,
                                          AttributeDefImpl attrDef) throws Exception {
-        if ((index >= AttributesEnum.firstIndex()) && (index < AttributesEnum.count())) {
-            AttributesEnum.staticValues()[index - AttributesEnum.firstIndex()].put(this, value);
+        if ((index >= SpCalendarHVORowImpl.AttributesEnum.firstIndex()) && (index < SpCalendarHVORowImpl.AttributesEnum.count())) {
+            SpCalendarHVORowImpl.AttributesEnum.staticValues()[index - SpCalendarHVORowImpl.AttributesEnum.firstIndex()].put(this, value);
             return;
         }
         super.setAttrInvokeAccessor(index, value, attrDef);

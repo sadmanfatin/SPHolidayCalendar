@@ -3,15 +3,15 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="WpMonthListVO"
+  Name="SpCalendarHVO"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
   UseGlueCode="false"
-  RowClass="model.view.WpMonthListVORowImpl"
-  ComponentClass="model.view.WpMonthListVOImpl">
+  RowClass="model.view.SpCalendarHVORowImpl"
+  ComponentClass="model.view.SpCalendarHVOImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -58,7 +58,7 @@ FROM SP_CALENDAR_H WpMonthListEO]]>
   </SQLQuery>
   <EntityUsage
     Name="WpMonthListEO"
-    Entity="model.entity.WpMonthListEO"/>
+    Entity="model.entity.SpCalendarHEO"/>
   <ViewAttribute
     Name="MonthId"
     IsNotNull="true"
@@ -127,12 +127,12 @@ FROM SP_CALENDAR_H WpMonthListEO]]>
     SQLType="NUMERIC"/>
   <ViewLinkAccessor
     Name="WpHolidayCalendarVO"
-    ViewLink="model.view.WpHolidayCalendarR01Link"
+    ViewLink="model.view.SpHolidayCalendarR01Link"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ViewLinkAccessor
     Name="HolidayCalendarSearchVO"
-    ViewLink="model.view.HolidayCalendarSearchVO_vs_WpMonthListVO_vl"
+    ViewLink="model.view.HolidayCalendarSearchVO_vs_SpCalendarHVO_vl"
     Type="oracle.jbo.Row"
     Reversed="true"
     IsUpdateable="false"/>

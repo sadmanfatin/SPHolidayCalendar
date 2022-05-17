@@ -14,17 +14,17 @@
                                  xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                                  id="pgl2" styleClass="AFStretchWidth"
                                  layout="scroll">
-              <af:table value="#{bindings.WpHolidayCalendarVO1.collectionModel}"
+              <af:table value="#{bindings.SpCalendarLVO1.collectionModel}"
                         var="row"
-                        rows="#{bindings.WpHolidayCalendarVO1.rangeSize}"
-                        emptyText="#{bindings.WpHolidayCalendarVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                        fetchSize="#{bindings.WpHolidayCalendarVO1.rangeSize}"
+                        rows="#{bindings.SpCalendarLVO1.rangeSize}"
+                        emptyText="#{bindings.SpCalendarLVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.SpCalendarLVO1.rangeSize}"
                         rowBandingInterval="0"
-                        filterModel="#{bindings.WpHolidayCalendarVO1Query.queryDescriptor}"
-                        queryListener="#{bindings.WpHolidayCalendarVO1Query.processQuery}"
+                        filterModel="#{bindings.SpCalendarLVO1Query.queryDescriptor}"
+                        queryListener="#{bindings.SpCalendarLVO1Query.processQuery}"
                         filterVisible="true" varStatus="vs"
-                        selectedRowKeys="#{bindings.WpHolidayCalendarVO1.collectionModel.selectedRow}"
-                        selectionListener="#{bindings.WpHolidayCalendarVO1.collectionModel.makeCurrent}"
+                        selectedRowKeys="#{bindings.SpCalendarLVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SpCalendarLVO1.collectionModel.makeCurrent}"
                         rowSelection="single" id="t1"
                         partialTriggers="::soc1 ::soc2 ::soc3" styleClass="AFStretchWidth"
                         autoHeightRows="31">
@@ -34,29 +34,29 @@
                            partialTriggers="soc4"
                            binding="#{ManagedBean.hcDay}">
                   <af:inputText value="#{row.bindings.DayName.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.DayName.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.DayName.mandatory}"
-                                columns="#{bindings.WpHolidayCalendarVO1.hints.DayName.displayWidth}"
-                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.DayName.precision}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.DayName.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.DayName.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.DayName.mandatory}"
+                                columns="#{bindings.SpCalendarLVO1.hints.DayName.displayWidth}"
+                                maximumLength="#{bindings.SpCalendarLVO1.hints.DayName.precision}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.DayName.tooltip}"
                                 id="it11" readOnly="true">
                     <f:validator binding="#{row.bindings.DayName.validator}"/>
                   </af:inputText>
                 </af:column>
                 <af:column sortProperty="DayId" filterable="true"
                            sortable="true"
-                           headerText="#{bindings.WpHolidayCalendarVO1.hints.DayId.label}"
+                           headerText="#{bindings.SpCalendarLVO1.hints.DayId.label}"
                            id="c3" visible="false">
                   <af:inputText value="#{row.bindings.DayId.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.DayId.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.DayId.mandatory}"
-                                columns="#{bindings.WpHolidayCalendarVO1.hints.DayId.displayWidth}"
-                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.DayId.precision}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.DayId.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.DayId.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.DayId.mandatory}"
+                                columns="#{bindings.SpCalendarLVO1.hints.DayId.displayWidth}"
+                                maximumLength="#{bindings.SpCalendarLVO1.hints.DayId.precision}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.DayId.tooltip}"
                                 id="it6">
                     <f:validator binding="#{row.bindings.DayId.validator}"/>
                     <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.WpHolidayCalendarVO1.hints.DayId.format}"/>
+                                      pattern="#{bindings.SpCalendarLVO1.hints.DayId.format}"/>
                   </af:inputText>
                 </af:column>
                 <af:column sortProperty="Day" filterable="false"
@@ -69,9 +69,9 @@
                     <af:inputDate value="#{vs.filterCriteria.Day}" id="id2"/>
                   </f:facet>
                   <af:inputDate value="#{row.bindings.Day.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.Day.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.Day.mandatory}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.Day.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.Day.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.Day.mandatory}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.Day.tooltip}"
                                 id="id1" readOnly="true">
                     <f:validator binding="#{row.bindings.Day.validator}"/>
                     <af:convertDateTime dateStyle="long"/>
@@ -79,15 +79,15 @@
                 </af:column>
                 <af:column sortProperty="WorkingStatus" filterable="true"
                            sortable="false"
-                           headerText="#{bindings.WpHolidayCalendarVO1.hints.WorkingStatus.label}"
+                           headerText="#{bindings.SpCalendarLVO1.hints.WorkingStatus.label}"
                            id="c4" width="120" align="center"
                            inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
                            binding="#{ManagedBean.hcWorkingStatus}"
                            filterFeatures="caseInsensitive">
                   <af:selectOneChoice value="#{row.bindings.WorkingStatus.inputValue}"
                                       label="#{row.bindings.WorkingStatus.label}"
-                                      required="#{bindings.WpHolidayCalendarVO1.hints.WorkingStatus.mandatory}"
-                                      shortDesc="#{bindings.WpHolidayCalendarVO1.hints.WorkingStatus.tooltip}"
+                                      required="#{bindings.SpCalendarLVO1.hints.WorkingStatus.mandatory}"
+                                      shortDesc="#{bindings.SpCalendarLVO1.hints.WorkingStatus.tooltip}"
                                       id="soc4" autoSubmit="true"
                                       valueChangeListener="#{ManagedBean.WorkingStatusValueChangeListener}"
                                       contentStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}">
@@ -103,37 +103,37 @@
                            binding="#{ManagedBean.hcHolidayDescription}"
                            filterFeatures="caseInsensitive">
                   <af:inputText value="#{row.bindings.HolidayDescription.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.mandatory}"
-                                columns="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.displayWidth}"
-                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.precision}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.HolidayDescription.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.HolidayDescription.mandatory}"
+                                columns="#{bindings.SpCalendarLVO1.hints.HolidayDescription.displayWidth}"
+                                maximumLength="#{bindings.SpCalendarLVO1.hints.HolidayDescription.precision}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.HolidayDescription.tooltip}"
                                 id="it5" readOnly="true">
                     <f:validator binding="#{row.bindings.HolidayDescription.validator}"/>
                   </af:inputText>
                 </af:column>
                 <af:column sortProperty="LastUpdatedBy" filterable="true"
                            sortable="true"
-                           headerText="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.label}"
+                           headerText="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.label}"
                            id="c2" align="center" partialTriggers="soc4"
                            binding="#{ManagedBean.hcLastUpdatedBy}"
                            inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
                            visible="false">
                   <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.mandatory}"
-                                columns="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.displayWidth}"
-                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.precision}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.mandatory}"
+                                columns="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.displayWidth}"
+                                maximumLength="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.precision}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.tooltip}"
                                 id="it4" readOnly="true">
                     <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
                     <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.format}"/>
+                                      pattern="#{bindings.SpCalendarLVO1.hints.LastUpdatedBy.format}"/>
                   </af:inputText>
                 </af:column>
                 <af:column sortProperty="LastUpdatedDate" filterable="true"
                            sortable="true"
-                           headerText="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.label}"
+                           headerText="#{bindings.SpCalendarLVO1.hints.LastUpdatedDate.label}"
                            id="c5" width="120" align="center"
                            inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
                            partialTriggers="soc4"
@@ -144,28 +144,28 @@
                                   id="id3"/>
                   </f:facet>
                   <af:inputDate value="#{row.bindings.LastUpdatedDate.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.mandatory}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.LastUpdatedDate.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.LastUpdatedDate.mandatory}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.LastUpdatedDate.tooltip}"
                                 id="id4" readOnly="true">
                     <f:validator binding="#{row.bindings.LastUpdatedDate.validator}"/>
-                    <af:convertDateTime pattern="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.format}"/>
+                    <af:convertDateTime pattern="#{bindings.SpCalendarLVO1.hints.LastUpdatedDate.format}"/>
                   </af:inputDate>
                 </af:column>
                 <af:column sortProperty="MonthId" filterable="true"
                            sortable="true"
-                           headerText="#{bindings.WpHolidayCalendarVO1.hints.MonthId.label}"
+                           headerText="#{bindings.SpCalendarLVO1.hints.MonthId.label}"
                            id="c1" visible="false">
                   <af:inputText value="#{row.bindings.MonthId.inputValue}"
-                                label="#{bindings.WpHolidayCalendarVO1.hints.MonthId.label}"
-                                required="#{bindings.WpHolidayCalendarVO1.hints.MonthId.mandatory}"
-                                columns="#{bindings.WpHolidayCalendarVO1.hints.MonthId.displayWidth}"
-                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.MonthId.precision}"
-                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.MonthId.tooltip}"
+                                label="#{bindings.SpCalendarLVO1.hints.MonthId.label}"
+                                required="#{bindings.SpCalendarLVO1.hints.MonthId.mandatory}"
+                                columns="#{bindings.SpCalendarLVO1.hints.MonthId.displayWidth}"
+                                maximumLength="#{bindings.SpCalendarLVO1.hints.MonthId.precision}"
+                                shortDesc="#{bindings.SpCalendarLVO1.hints.MonthId.tooltip}"
                                 id="it3">
                     <f:validator binding="#{row.bindings.MonthId.validator}"/>
                     <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.WpHolidayCalendarVO1.hints.MonthId.format}"/>
+                                      pattern="#{bindings.SpCalendarLVO1.hints.MonthId.format}"/>
                   </af:inputText>
                 </af:column>
               </af:table>

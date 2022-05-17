@@ -3,19 +3,19 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="WpHolidayCalendarVO"
+  Name="SpCalendarLVO"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
   UseGlueCode="false"
-  RowClass="model.view.WpHolidayCalendarVORowImpl"
-  ComponentClass="model.view.WpHolidayCalendarVOImpl">
+  ComponentClass="model.view.SpCalendarLVOImpl"
+  RowClass="model.view.SpCalendarLVORowImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
-    <Attr Name="_isCodegen" Value="true"/>
     <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <ViewAccessor
     Name="DayStatusLOV1"
@@ -52,7 +52,7 @@ FROM SP_CALENDAR_L WpHolidayCalendarEO]]>
   </SQLQuery>
   <EntityUsage
     Name="WpHolidayCalendarEO"
-    Entity="model.entity.WpHolidayCalendarEO"/>
+    Entity="model.entity.SpCalendarLEO"/>
   <ViewAttribute
     Name="DayId"
     IsNotNull="true"

@@ -20,25 +20,25 @@
     Name="HolidayCalendarSearchVO1"
     ViewObjectName="model.view.HolidayCalendarSearchVO"/>
   <ViewUsage
-    Name="WpMonthListVO1"
-    ViewObjectName="model.view.WpMonthListVO"/>
-  <ViewUsage
-    Name="WpHolidayCalendarVO1"
-    ViewObjectName="model.view.WpHolidayCalendarVO"/>
-  <ViewUsage
     Name="OrgVO1"
     ViewObjectName="model.view.OrgVO"/>
+  <ViewUsage
+    Name="SpCalendarHVO1"
+    ViewObjectName="model.view.SpCalendarHVO"/>
+  <ViewUsage
+    Name="SpCalendarLVO1"
+    ViewObjectName="model.view.SpCalendarLVO"/>
   <ViewLinkUsage
-    Name="HolidayCalendarSearchVO_vs_WpMonthListVO_vl1"
-    ViewLinkObjectName="model.view.HolidayCalendarSearchVO_vs_WpMonthListVO_vl"
+    Name="HolidayCalendarSearchVO_vs_SpCalendarHVO_vl1"
+    ViewLinkObjectName="model.view.HolidayCalendarSearchVO_vs_SpCalendarHVO_vl"
     SrcViewUsageName="model.service.AppModule.HolidayCalendarSearchVO1"
-    DstViewUsageName="model.service.AppModule.WpMonthListVO1"
+    DstViewUsageName="model.service.AppModule.SpCalendarHVO1"
     Reversed="false"/>
   <ViewLinkUsage
-    Name="WpHolidayCalendarR01Link1"
-    ViewLinkObjectName="model.view.WpHolidayCalendarR01Link"
-    SrcViewUsageName="model.service.AppModule.WpMonthListVO1"
-    DstViewUsageName="model.service.AppModule.WpHolidayCalendarVO1"
+    Name="SpHolidayCalendarR01Link1"
+    ViewLinkObjectName="model.view.SpHolidayCalendarR01Link"
+    SrcViewUsageName="model.service.AppModule.SpCalendarHVO1"
+    DstViewUsageName="model.service.AppModule.SpCalendarLVO1"
     Reversed="false"/>
   <ClientInterface>
     <Method

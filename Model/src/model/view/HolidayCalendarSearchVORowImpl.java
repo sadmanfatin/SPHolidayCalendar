@@ -38,22 +38,22 @@ public class HolidayCalendarSearchVORowImpl extends ViewRowImpl {
 
     public void setCurrentMonthFromMonthList() {
         
-         WpMonthListVORowImpl newMonthListVoRow ;
+         SpCalendarHVORowImpl newMonthListVoRow ;
    
-        if(this.getWpMonthListVO() == null) {
+        if(this.getSpCalendarHVO() == null) {
             
-            System.out.println("---------------------------    this.getWpMonthListVO() == null  -------------------------");  
-            newMonthListVoRow = (WpMonthListVORowImpl)appM.getWpMonthListVO1().createRow();
-            appM.getWpMonthListVO1().insertRow(newMonthListVoRow);
-            appM.getWpMonthListVO1().setCurrentRow(newMonthListVoRow);            
+            System.out.println("---------------------------    this.getSpCalendarHVO() == null  -------------------------");  
+            newMonthListVoRow = (SpCalendarHVORowImpl)appM.getSpCalendarHVO1().createRow();
+            appM.getSpCalendarHVO1().insertRow(newMonthListVoRow);
+            appM.getSpCalendarHVO1().setCurrentRow(newMonthListVoRow);            
             appM.getDBTransaction().commit();
         }  
-             
+           
     }
 
    public void updateHolidayForHolidayCalendar() {
        
-        String currentMonthId = this.getWpMonthListVO().getAttribute("MonthId").toString() ;      
+        String currentMonthId = this.getSpCalendarHVO().getAttribute("MonthId").toString() ;      
         String statement = "BEGIN APPS.SP_HC_HOLIDAY_UPDATE(:1); END;";
         CallableStatement cs =  appM.getDBTransaction().createCallableStatement(statement, 1);
           
@@ -109,9 +109,9 @@ public class HolidayCalendarSearchVORowImpl extends ViewRowImpl {
             }
         }
         ,
-        WpMonthListVO {
+        SpCalendarHVO {
             public Object get(HolidayCalendarSearchVORowImpl obj) {
-                return obj.getWpMonthListVO();
+                return obj.getSpCalendarHVO();
             }
 
             public void put(HolidayCalendarSearchVORowImpl obj, Object value) {
@@ -172,7 +172,7 @@ public class HolidayCalendarSearchVORowImpl extends ViewRowImpl {
     public static final int ORGNAME = AttributesEnum.OrgName.index();
     public static final int MONTHNAME = AttributesEnum.MonthName.index();
     public static final int YEAR = AttributesEnum.Year.index();
-    public static final int WPMONTHLISTVO = AttributesEnum.WpMonthListVO.index();
+    public static final int SpCalendarHVO = AttributesEnum.SpCalendarHVO.index();
     public static final int MONTHLOV1 = AttributesEnum.MonthLOV1.index();
     public static final int YEARLOV1 = AttributesEnum.YearLOV1.index();
 
@@ -255,7 +255,7 @@ public class HolidayCalendarSearchVORowImpl extends ViewRowImpl {
         setAttributeInternal(YEAR, value);       
         setCurrentMonthFromMonthList();   // this method creates new month row for selected month if not created yet
         
-//        String currentMonthId = this.getWpMonthListVO().getAttribute("MonthId").toString() ;         
+//        String currentMonthId = this.getSpCalendarHVO().getAttribute("MonthId").toString() ;         
 //        System.out.println("current month id : " +currentMonthId );
       
         updateHolidayForHolidayCalendar( );
@@ -264,17 +264,17 @@ public class HolidayCalendarSearchVORowImpl extends ViewRowImpl {
 
 
     /**
-     * Gets the associated <code>Row</code> using master-detail link WpMonthListVO.
+     * Gets the associated <code>Row</code> using master-detail link SpCalendarHVO.
      */
-    public Row getWpMonthListVO() {
-        return (Row)getAttributeInternal(WPMONTHLISTVO);
+    public Row getSpCalendarHVO() {
+        return (Row)getAttributeInternal(SpCalendarHVO);
     }
 
     /**
-     * Sets the master-detail link WpMonthListVO between this object and <code>value</code>.
+     * Sets the master-detail link SpCalendarHVO between this object and <code>value</code>.
      */
-    public void setWpMonthListVO(Row value) {
-        setAttributeInternal(WPMONTHLISTVO, value);
+    public void setSpCalendarHVO(Row value) {
+        setAttributeInternal(SpCalendarHVO, value);
     }
 
     /**

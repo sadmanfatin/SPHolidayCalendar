@@ -11,8 +11,9 @@ import model.service.common.AppModule;
 import model.view.HolidayCalendarSearchVOImpl;
 
 
-import model.view.WpHolidayCalendarVOImpl;
-import model.view.WpMonthListVOImpl;
+import model.view.SpCalendarHVOImpl;
+
+import model.view.SpCalendarLVOImpl;
 
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
@@ -71,42 +72,42 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
     }
 
     /**
-     * Container's getter for WpMonthListVO1.
-     * @return WpMonthListVO1
-     */
-    public WpMonthListVOImpl getWpMonthListVO1() {
-        return (WpMonthListVOImpl)findViewObject("WpMonthListVO1");
-    }
-
-    /**
-     * Container's getter for HolidayCalendarSearchVO_vs_WpMonthListVO_vl1.
-     * @return HolidayCalendarSearchVO_vs_WpMonthListVO_vl1
-     */
-    public ViewLinkImpl getHolidayCalendarSearchVO_vs_WpMonthListVO_vl1() {
-        return (ViewLinkImpl)findViewLink("HolidayCalendarSearchVO_vs_WpMonthListVO_vl1");
-    }
-
-    /**
-     * Container's getter for WpHolidayCalendarVO1.
-     * @return WpHolidayCalendarVO1
-     */
-    public ViewObjectImpl getWpHolidayCalendarVO1() {
-        return (ViewObjectImpl)findViewObject("WpHolidayCalendarVO1");
-    }
-
-    /**
-     * Container's getter for WpHolidayCalendarR01Link1.
-     * @return WpHolidayCalendarR01Link1
-     */
-    public ViewLinkImpl getWpHolidayCalendarR01Link1() {
-        return (ViewLinkImpl)findViewLink("WpHolidayCalendarR01Link1");
-    }
-
-    /**
      * Container's getter for OrgVO1.
      * @return OrgVO1
      */
     public ViewObjectImpl getOrgVO1() {
         return (ViewObjectImpl)findViewObject("OrgVO1");
+    }
+
+    /**
+     * Container's getter for SpCalendarHVO1.
+     * @return SpCalendarHVO1
+     */
+    public SpCalendarHVOImpl getSpCalendarHVO1() {
+        return (SpCalendarHVOImpl)findViewObject("SpCalendarHVO1");
+    }
+
+    /**
+     * Container's getter for HolidayCalendarSearchVO_vs_SpCalendarHVO_vl1.
+     * @return HolidayCalendarSearchVO_vs_SpCalendarHVO_vl1
+     */
+    public ViewLinkImpl getHolidayCalendarSearchVO_vs_SpCalendarHVO_vl1() {
+        return (ViewLinkImpl)findViewLink("HolidayCalendarSearchVO_vs_SpCalendarHVO_vl1");
+    }
+
+    /**
+     * Container's getter for SpCalendarLVO1.
+     * @return SpCalendarLVO1
+     */
+    public SpCalendarLVOImpl getSpCalendarLVO1() {
+        return (SpCalendarLVOImpl)findViewObject("SpCalendarLVO1");
+    }
+
+    /**
+     * Container's getter for SpHolidayCalendarR01Link1.
+     * @return SpHolidayCalendarR01Link1
+     */
+    public ViewLinkImpl getSpHolidayCalendarR01Link1() {
+        return (ViewLinkImpl)findViewLink("SpHolidayCalendarR01Link1");
     }
 }

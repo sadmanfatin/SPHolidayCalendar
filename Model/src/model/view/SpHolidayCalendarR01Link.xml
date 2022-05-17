@@ -3,36 +3,36 @@
 <!---->
 <ViewLink
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="WpHolidayCalendarR01Link"
+  Name="SpHolidayCalendarR01Link"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
-  EntityAssociation="model.entity.WpHolidayCalendarR01Assoc">
+  EntityAssociation="model.entity.SpCalendarR01Assoc">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <ViewLinkDefEnd
     Name="WpMonthListVO"
     Cardinality="1"
-    Owner="model.view.WpMonthListVO"
+    Owner="model.view.SpCalendarHVO"
     Source="true">
     <DesignTime>
       <Attr Name="_finderName" Value="WpMonthListVO"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="model.view.WpMonthListVO.MonthId"/>
+      <Item Value="model.view.SpCalendarHVO.MonthId"/>
     </AttrArray>
   </ViewLinkDefEnd>
   <ViewLinkDefEnd
     Name="WpHolidayCalendarVO"
     Cardinality="-1"
-    Owner="model.view.WpHolidayCalendarVO">
+    Owner="model.view.SpCalendarLVO">
     <DesignTime>
       <Attr Name="_finderName" Value="WpHolidayCalendarVO"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="model.view.WpHolidayCalendarVO.MonthId"/>
+      <Item Value="model.view.SpCalendarLVO.MonthId"/>
     </AttrArray>
   </ViewLinkDefEnd>
 </ViewLink>

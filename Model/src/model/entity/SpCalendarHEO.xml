@@ -3,7 +3,7 @@
 <!---->
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="WpMonthListEO"
+  Name="SpCalendarHEO"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
   DBObjectType="table"
@@ -11,7 +11,7 @@
   AliasName="WpMonthListEO"
   BindingStyle="OracleName"
   UseGlueCode="false"
-  RowClass="model.entity.WpMonthListEOImpl">
+  RowClass="model.entity.SpCalendarHEOImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Init|Access|DML"/>
     <AttrArray Name="_publishEvents"/>
@@ -79,9 +79,9 @@
   </Attribute>
   <AccessorAttribute
     Name="WpHolidayCalendarEO"
-    Association="model.entity.WpHolidayCalendarR01Assoc"
-    AssociationEnd="model.entity.WpHolidayCalendarR01Assoc.WpHolidayCalendarEO"
-    AssociationOtherEnd="model.entity.WpHolidayCalendarR01Assoc.WpMonthListEO"
+    Association="model.entity.SpCalendarR01Assoc"
+    AssociationEnd="model.entity.SpCalendarR01Assoc.WpHolidayCalendarEO"
+    AssociationOtherEnd="model.entity.SpCalendarR01Assoc.WpMonthListEO"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <Key
@@ -92,7 +92,7 @@
       <Attr Name="_isCheck" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="model.entity.WpMonthListEO.OrgId"/>
+      <Item Value="model.entity.SpCalendarHEO.OrgId"/>
     </AttrArray>
   </Key>
   <Key
@@ -102,7 +102,7 @@
       <Attr Name="_DBObjectName" Value="WP_HOLIDAY_CALENDAR_H_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="model.entity.WpMonthListEO.MonthId"/>
+      <Item Value="model.entity.SpCalendarHEO.MonthId"/>
     </AttrArray>
   </Key>
 </Entity>

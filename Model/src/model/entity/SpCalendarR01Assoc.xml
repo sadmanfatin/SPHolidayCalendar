@@ -3,7 +3,7 @@
 <!---->
 <Association
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="WpHolidayCalendarR01Assoc"
+  Name="SpCalendarR01Assoc"
   Version="11.1.1.62.29"
   InheritPersonalization="true">
   <DesignTime>
@@ -13,31 +13,31 @@
     Name="WpMonthListEO"
     Cardinality="1"
     Source="true"
-    Owner="model.entity.WpMonthListEO">
+    Owner="model.entity.SpCalendarHEO">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="WpMonthListEO"/>
       <Attr Name="_foreignKey"
-        Value="model.entity.WpMonthListEO.WpHolidayCalendarHPk"/>
+        Value="model.entity.SpCalendarHEO.WpHolidayCalendarHPk"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="model.entity.WpMonthListEO.MonthId"/>
+      <Item Value="model.entity.SpCalendarHEO.MonthId"/>
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
     Name="WpHolidayCalendarEO"
     Cardinality="-1"
-    Owner="model.entity.WpHolidayCalendarEO">
+    Owner="model.entity.SpCalendarLEO">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="WpHolidayCalendarEO"/>
       <Attr Name="_foreignKey"
-        Value="model.entity.WpHolidayCalendarEO.WpHolidayCalendarR01"/>
+        Value="model.entity.SpCalendarLEO.WpHolidayCalendarR01"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="model.entity.WpHolidayCalendarEO.MonthId"/>
+      <Item Value="model.entity.SpCalendarLEO.MonthId"/>
     </AttrArray>
   </AssociationEnd>
 </Association>

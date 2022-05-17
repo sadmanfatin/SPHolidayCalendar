@@ -17,7 +17,7 @@ import oracle.jbo.server.TransactionEvent;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class WpMonthListEOImpl extends EntityImpl {
+public class SpCalendarHEOImpl extends EntityImpl {
     private static EntityDefImpl mDefinitionObject;
 
     /**
@@ -25,61 +25,61 @@ public class WpMonthListEOImpl extends EntityImpl {
      */
     public enum AttributesEnum {
         MonthId {
-            public Object get(WpMonthListEOImpl obj) {
+            public Object get(SpCalendarHEOImpl obj) {
                 return obj.getMonthId();
             }
 
-            public void put(WpMonthListEOImpl obj, Object value) {
+            public void put(SpCalendarHEOImpl obj, Object value) {
                 obj.setMonthId((Number)value);
             }
         }
         ,
         MonthName {
-            public Object get(WpMonthListEOImpl obj) {
+            public Object get(SpCalendarHEOImpl obj) {
                 return obj.getMonthName();
             }
 
-            public void put(WpMonthListEOImpl obj, Object value) {
+            public void put(SpCalendarHEOImpl obj, Object value) {
                 obj.setMonthName((String)value);
             }
         }
         ,
         Year {
-            public Object get(WpMonthListEOImpl obj) {
+            public Object get(SpCalendarHEOImpl obj) {
                 return obj.getYear();
             }
 
-            public void put(WpMonthListEOImpl obj, Object value) {
+            public void put(SpCalendarHEOImpl obj, Object value) {
                 obj.setYear((Number)value);
             }
         }
         ,
         OrgId {
-            public Object get(WpMonthListEOImpl obj) {
+            public Object get(SpCalendarHEOImpl obj) {
                 return obj.getOrgId();
             }
 
-            public void put(WpMonthListEOImpl obj, Object value) {
+            public void put(SpCalendarHEOImpl obj, Object value) {
                 obj.setOrgId((Number)value);
             }
         }
         ,
         WeeklyHoliday {
-            public Object get(WpMonthListEOImpl obj) {
+            public Object get(SpCalendarHEOImpl obj) {
                 return obj.getWeeklyHoliday();
             }
 
-            public void put(WpMonthListEOImpl obj, Object value) {
+            public void put(SpCalendarHEOImpl obj, Object value) {
                 obj.setWeeklyHoliday((String)value);
             }
         }
         ,
         WpHolidayCalendarEO {
-            public Object get(WpMonthListEOImpl obj) {
+            public Object get(SpCalendarHEOImpl obj) {
                 return obj.getWpHolidayCalendarEO();
             }
 
-            public void put(WpMonthListEOImpl obj, Object value) {
+            public void put(SpCalendarHEOImpl obj, Object value) {
                 obj.setAttributeInternal(index(), value);
             }
         }
@@ -87,12 +87,12 @@ public class WpMonthListEOImpl extends EntityImpl {
         private static AttributesEnum[] vals = null;
         private static int firstIndex = 0;
 
-        public abstract Object get(WpMonthListEOImpl object);
+        public abstract Object get(SpCalendarHEOImpl object);
 
-        public abstract void put(WpMonthListEOImpl object, Object value);
+        public abstract void put(SpCalendarHEOImpl object, Object value);
 
         public int index() {
-            return AttributesEnum.firstIndex() + ordinal();
+            return SpCalendarHEOImpl.AttributesEnum.firstIndex() + ordinal();
         }
 
         public static int firstIndex() {
@@ -100,29 +100,29 @@ public class WpMonthListEOImpl extends EntityImpl {
         }
 
         public static int count() {
-            return AttributesEnum.firstIndex() + AttributesEnum.staticValues().length;
+            return SpCalendarHEOImpl.AttributesEnum.firstIndex() + SpCalendarHEOImpl.AttributesEnum.staticValues().length;
         }
 
         public static AttributesEnum[] staticValues() {
             if (vals == null) {
-                vals = AttributesEnum.values();
+                vals = SpCalendarHEOImpl.AttributesEnum.values();
             }
             return vals;
         }
     }
 
 
-    public static final int MONTHID = AttributesEnum.MonthId.index();
-    public static final int MONTHNAME = AttributesEnum.MonthName.index();
-    public static final int YEAR = AttributesEnum.Year.index();
-    public static final int ORGID = AttributesEnum.OrgId.index();
-    public static final int WEEKLYHOLIDAY = AttributesEnum.WeeklyHoliday.index();
-    public static final int WPHOLIDAYCALENDAREO = AttributesEnum.WpHolidayCalendarEO.index();
+    public static final int MONTHID = SpCalendarHEOImpl.AttributesEnum.MonthId.index();
+    public static final int MONTHNAME = SpCalendarHEOImpl.AttributesEnum.MonthName.index();
+    public static final int YEAR = SpCalendarHEOImpl.AttributesEnum.Year.index();
+    public static final int ORGID = SpCalendarHEOImpl.AttributesEnum.OrgId.index();
+    public static final int WEEKLYHOLIDAY = SpCalendarHEOImpl.AttributesEnum.WeeklyHoliday.index();
+    public static final int WPHOLIDAYCALENDAREO = SpCalendarHEOImpl.AttributesEnum.WpHolidayCalendarEO.index();
 
     /**
      * This is the default constructor (do not remove).
      */
-    public WpMonthListEOImpl() {
+    public SpCalendarHEOImpl() {
     }
 
 
@@ -131,7 +131,7 @@ public class WpMonthListEOImpl extends EntityImpl {
      */
     public static synchronized EntityDefImpl getDefinitionObject() {
         if (mDefinitionObject == null) {
-            mDefinitionObject = EntityDefImpl.findDefObject("model.entity.WpMonthListEO");
+            mDefinitionObject = EntityDefImpl.findDefObject("model.entity.SpCalendarHEO");
         }
         return mDefinitionObject;
     }
@@ -227,8 +227,8 @@ public class WpMonthListEOImpl extends EntityImpl {
      */
     protected Object getAttrInvokeAccessor(int index,
                                            AttributeDefImpl attrDef) throws Exception {
-        if ((index >= AttributesEnum.firstIndex()) && (index < AttributesEnum.count())) {
-            return AttributesEnum.staticValues()[index - AttributesEnum.firstIndex()].get(this);
+        if ((index >= SpCalendarHEOImpl.AttributesEnum.firstIndex()) && (index < SpCalendarHEOImpl.AttributesEnum.count())) {
+            return SpCalendarHEOImpl.AttributesEnum.staticValues()[index - SpCalendarHEOImpl.AttributesEnum.firstIndex()].get(this);
         }
         return super.getAttrInvokeAccessor(index, attrDef);
     }
@@ -243,8 +243,8 @@ public class WpMonthListEOImpl extends EntityImpl {
      */
     protected void setAttrInvokeAccessor(int index, Object value,
                                          AttributeDefImpl attrDef) throws Exception {
-        if ((index >= AttributesEnum.firstIndex()) && (index < AttributesEnum.count())) {
-            AttributesEnum.staticValues()[index - AttributesEnum.firstIndex()].put(this, value);
+        if ((index >= SpCalendarHEOImpl.AttributesEnum.firstIndex()) && (index < SpCalendarHEOImpl.AttributesEnum.count())) {
+            SpCalendarHEOImpl.AttributesEnum.staticValues()[index - SpCalendarHEOImpl.AttributesEnum.firstIndex()].put(this, value);
             return;
         }
         super.setAttrInvokeAccessor(index, value, attrDef);

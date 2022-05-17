@@ -9,14 +9,14 @@
               id="HolidayCalendarSearchVO1Iterator"/>
     <invokeAction id="setSessionValue" Binds="setSessionValues"
                   Refresh="always"/>
-    <iterator Binds="WpMonthListVO1" RangeSize="25"
-              DataControl="AppModuleDataControl" id="WpMonthListVO1Iterator"/>
-    <iterator Binds="WpHolidayCalendarVO1" RangeSize="32"
+    <iterator Binds="SpCalendarHVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="SpCalendarHVO1Iterator"/>
+    <iterator Binds="SpCalendarLVO1" RangeSize="25"
               DataControl="AppModuleDataControl"
-              id="WpHolidayCalendarVO1Iterator"/>
-    <searchRegion Binds="WpHolidayCalendarVO1Iterator" Criteria=""
+              id="SpCalendarLVO1Iterator"/>
+    <searchRegion Binds="SpCalendarLVO1Iterator" Criteria=""
                   Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
-                  id="WpHolidayCalendarVO1Query"/>
+                  id="SpCalendarLVO1Query"/>
     <iterator Binds="OrgVO1" RangeSize="10" DataControl="AppModuleDataControl"
               id="OrgVO1Iterator"/>
   </executables>
@@ -44,46 +44,45 @@
           Uses="LOV_MonthName" id="MonthName" DTSupportsMRU="false"/>
     <list IterBinding="HolidayCalendarSearchVO1Iterator" StaticList="false"
           Uses="LOV_Year" id="Year" DTSupportsMRU="false"/>
-    <attributeValues IterBinding="WpMonthListVO1Iterator" id="MonthId">
+    <attributeValues IterBinding="SpCalendarHVO1Iterator" id="MonthId">
       <AttrNames>
         <Item Value="MonthId"/>
       </AttrNames>
     </attributeValues>
-    <action IterBinding="WpMonthListVO1Iterator" id="CreateInsert"
-            InstanceName="AppModuleDataControl.WpMonthListVO1"
+    <action IterBinding="SpCalendarHVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.SpCalendarHVO1"
             DataControl="AppModuleDataControl" RequiresUpdateModel="true"
             Action="createInsertRow"/>
-    <tree IterBinding="WpHolidayCalendarVO1Iterator" id="WpHolidayCalendarVO1">
-      <nodeDefinition DefName="model.view.WpHolidayCalendarVO"
-                      Name="WpHolidayCalendarVO10">
+    <tree id="SpCalendarLVO1" IterBinding="SpCalendarLVO1Iterator">
+      <nodeDefinition DefName="model.view.SpCalendarLVO" Name="SpCalendarLVO10">
         <AttrNames>
           <Item Value="DayId"/>
           <Item Value="Day"/>
+          <Item Value="DayName"/>
           <Item Value="HolidayDescription"/>
-          <Item Value="WorkingStatus"/>
           <Item Value="LastUpdatedBy"/>
           <Item Value="LastUpdatedDate"/>
           <Item Value="MonthId"/>
-          <Item Value="DayName"/>
+          <Item Value="WorkingStatus"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <list IterBinding="WpMonthListVO1Iterator" StaticList="false"
+    <list IterBinding="SpCalendarHVO1Iterator" StaticList="false"
           Uses="LOV_WeeklyHoliday" id="WeeklyHoliday" DTSupportsMRU="true"/>
     <action id="Commit" DataControl="AppModuleDataControl"
             RequiresUpdateModel="true" Action="commitTransaction"/>
-    <attributeValues IterBinding="WpMonthListVO1Iterator"
+    <attributeValues IterBinding="SpCalendarHVO1Iterator"
                      id="NomberOfWorkingDays">
       <AttrNames>
         <Item Value="NomberOfWorkingDays"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="WpMonthListVO1Iterator" id="NumberOfDays">
+    <attributeValues IterBinding="SpCalendarHVO1Iterator" id="NumberOfDays">
       <AttrNames>
         <Item Value="NumberOfDays"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="WpMonthListVO1Iterator" id="NumberOfHolidays">
+    <attributeValues IterBinding="SpCalendarHVO1Iterator" id="NumberOfHolidays">
       <AttrNames>
         <Item Value="NumberOfHolidays"/>
       </AttrNames>

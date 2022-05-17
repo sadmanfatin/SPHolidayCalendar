@@ -7,10 +7,10 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class WpHolidayCalendarVOImpl extends ViewObjectImpl {
+public class SpCalendarLVOImpl extends ViewObjectImpl {
     /**
      * This is the default constructor (do not remove).
      */
-    public WpHolidayCalendarVOImpl() {
+    public SpCalendarLVOImpl() {
     }
 }

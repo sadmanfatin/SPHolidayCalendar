@@ -16,7 +16,7 @@ import model.service.AppModuleImpl;
 import model.view.HolidayCalendarSearchVOImpl;
 import model.view.HolidayCalendarSearchVORowImpl;
 
-import model.view.WpMonthListVORowImpl;
+import model.view.SpCalendarHVORowImpl;
 
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
