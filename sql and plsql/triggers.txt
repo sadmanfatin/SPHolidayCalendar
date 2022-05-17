@@ -1,0 +1,123 @@
+CREATE OR REPLACE TRIGGER WP_SET_WEEKLY_HOLIDAY
+BEFORE INSERT
+ON WP_MONTH_LIST
+REFERENCING NEW AS NEW OLD AS OLD
+FOR EACH ROW
+DECLARE
+
+  WEEKLY_HOLIDAY VARCHAR2(100);
+  ORG_ID  NUMBER;
+--  MONTH  VARCHAR2(200) ;
+--  YEAR  NUMBER;
+
+
+BEGIN
+
+  ORG_ID := :NEW.ORG_ID;
+--  MONTH := :NEW.MONTH_NAME ;
+--  YEAR := :NEW.YEAR ;
+  WEEKLY_HOLIDAY  := APPS.WEEKLY_HOLIDAY_FOR_UNIT (ORG_ID );
+  
+   :NEW.WEEKLY_HOLIDAY := WEEKLY_HOLIDAY;
+
+
+   EXCEPTION
+   WHEN OTHERS THEN
+       -- Consider logging the error and then re-raise
+   RAISE;
+END WP_SET_WEEKLY_HOLIDAY;
+/
+
+
+===============================================================================================================================================================
+CREATE OR REPLACE TRIGGER WP_CREATE_DAYS
+AFTER INSERT
+ON WP_MONTH_LIST
+REFERENCING NEW AS New OLD AS Old
+FOR EACH ROW
+DECLARE
+
+ START_COUNT NUMBER; 
+  DAY_COUNT  NUMBER;
+  MONTH  VARCHAR2(200) ;
+  DAY  DATE;
+  YEAR  NUMBER;
+/******************************************************************************
+   NAME:       CREATE_DAYS
+   PURPOSE:    
+
+   REVISIONS:
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  ------------------------------------
+   1.0        8/16/2021      User       1. Created this trigger.
+
+   NOTES:
+
+   Automatically available Auto Replace Keywords:
+      Object Name:     CREATE_DAYS
+      Sysdate:         8/16/2021
+      Date and Time:   8/16/2021, 4:17:00 PM, and 8/16/2021 4:17:00 PM
+      Username:        User (set in TOAD Options, Proc Templates)
+      Table Name:      WP_MONTH_LIST (set in the "New PL/SQL Object" dialog)
+      Trigger Options:  (set in the "New PL/SQL Object" dialog)
+******************************************************************************/
+
+
+BEGIN
+   
+  START_COUNT := 1; 
+  DAY_COUNT := 0;
+  MONTH := :new.MONTH_NAME ;
+  YEAR := :new.YEAR ;
+  
+   
+   -- to get number of days for month
+  SELECT    TO_CHAR (   LAST_DAY  (TO_DATE(  :new.Month_name ||'/'|| :new.YEAR  , 'Month/yyyy')  )   , 'dd')  DAYS into  DAY_COUNT     FROM DUAL ;  
+   
+
+WHILE START_COUNT <= DAY_COUNT
+
+LOOP
+
+     DAY  := to_date (START_COUNT||'/'||:new.Month_name ||'/'||:new.YEAR   , 'dd/Month/yyyy');
+   
+
+      INSERT INTO WP_HOLIDAY_CALENDAR(DAY_ID, DAY, MONTH_ID) VALUES (APPS.WP_HOLIDAY_CALENDAR_SEQ.NEXTVAL , DAY, :NEW.MONTH_ID    ); 
+
+   
+   START_COUNT := START_COUNT+1;
+   
+END LOOP;
+
+
+   EXCEPTION
+     WHEN OTHERS THEN
+       -- Consider logging the error and then re-raise
+       RAISE;
+END WP_CREATE_DAYS;
+/
+
+
+===============================================================================================================================================================
+
+CREATE OR REPLACE TRIGGER WP_DELETE_DAYS
+BEFORE DELETE
+ON WP_MONTH_LIST
+REFERENCING NEW AS NEW OLD AS OLD
+FOR EACH ROW
+DECLARE
+
+
+
+
+BEGIN
+
+DELETE FROM WP_HOLIDAY_CALENDAR WHERE MONTH_ID  = :OLD.MONTH_ID;
+
+
+   EXCEPTION
+   WHEN OTHERS THEN
+       -- Consider logging the error and then re-raise
+   RAISE;
+END WP_DELETE_DAYS;
+/

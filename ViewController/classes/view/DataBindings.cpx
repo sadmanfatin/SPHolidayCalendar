@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.62.29" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <pageMap>
+    <page path="/home.jspx" usageId="view_homePageDef"/>
+    <page path="/test.jspx" usageId="view_testPageDef"/>
+    <page path="/test2.jspx" usageId="view_test2PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_homePageDef" path="view.pageDefs.homePageDef"/>
+    <page id="view_testPageDef" path="view.pageDefs.testPageDef"/>
+    <page id="view_test2PageDef" path="view.pageDefs.test2PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="model.service"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view beforePhase="#{ManagedBean.onPageLoad}">
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelStretchLayout id="psl1" topHeight="105px">
+          <f:facet name="center">
+            <af:panelGroupLayout
+                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                 id="pgl2" styleClass="AFStretchWidth"
+                                 layout="scroll">
+              <af:table value="#{bindings.WpHolidayCalendarVO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.WpHolidayCalendarVO1.rangeSize}"
+                        emptyText="#{bindings.WpHolidayCalendarVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.WpHolidayCalendarVO1.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.WpHolidayCalendarVO1Query.queryDescriptor}"
+                        queryListener="#{bindings.WpHolidayCalendarVO1Query.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectedRowKeys="#{bindings.WpHolidayCalendarVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.WpHolidayCalendarVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t1"
+                        partialTriggers="::soc1 ::soc2 ::soc3" styleClass="AFStretchWidth"
+                        autoHeightRows="31">
+                <af:column headerText="Day" id="c8" align="center"
+                           sortable="false" filterable="false"
+                           inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
+                           partialTriggers="soc4"
+                           binding="#{ManagedBean.hcDay}">
+                  <af:inputText value="#{row.bindings.DayName.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.DayName.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.DayName.mandatory}"
+                                columns="#{bindings.WpHolidayCalendarVO1.hints.DayName.displayWidth}"
+                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.DayName.precision}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.DayName.tooltip}"
+                                id="it11" readOnly="true">
+                    <f:validator binding="#{row.bindings.DayName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="DayId" filterable="true"
+                           sortable="true"
+                           headerText="#{bindings.WpHolidayCalendarVO1.hints.DayId.label}"
+                           id="c3" visible="false">
+                  <af:inputText value="#{row.bindings.DayId.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.DayId.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.DayId.mandatory}"
+                                columns="#{bindings.WpHolidayCalendarVO1.hints.DayId.displayWidth}"
+                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.DayId.precision}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.DayId.tooltip}"
+                                id="it6">
+                    <f:validator binding="#{row.bindings.DayId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.WpHolidayCalendarVO1.hints.DayId.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="Day" filterable="false"
+                           sortable="false" headerText="Date" id="c6"
+                           width="120" align="center"
+                           inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
+                           partialTriggers="soc4"
+                           binding="#{ManagedBean.hcDate}">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Day}" id="id2"/>
+                  </f:facet>
+                  <af:inputDate value="#{row.bindings.Day.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.Day.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.Day.mandatory}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.Day.tooltip}"
+                                id="id1" readOnly="true">
+                    <f:validator binding="#{row.bindings.Day.validator}"/>
+                    <af:convertDateTime dateStyle="long"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="WorkingStatus" filterable="true"
+                           sortable="false"
+                           headerText="#{bindings.WpHolidayCalendarVO1.hints.WorkingStatus.label}"
+                           id="c4" width="120" align="center"
+                           inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
+                           binding="#{ManagedBean.hcWorkingStatus}"
+                           filterFeatures="caseInsensitive">
+                  <af:selectOneChoice value="#{row.bindings.WorkingStatus.inputValue}"
+                                      label="#{row.bindings.WorkingStatus.label}"
+                                      required="#{bindings.WpHolidayCalendarVO1.hints.WorkingStatus.mandatory}"
+                                      shortDesc="#{bindings.WpHolidayCalendarVO1.hints.WorkingStatus.tooltip}"
+                                      id="soc4" autoSubmit="true"
+                                      valueChangeListener="#{ManagedBean.WorkingStatusValueChangeListener}"
+                                      contentStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}">
+                    <f:selectItems value="#{row.bindings.WorkingStatus.items}"
+                                   id="si4"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="HolidayDescription" filterable="true"
+                           sortable="false" headerText="Holiday Description"
+                           id="c7" align="center"
+                           inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
+                           partialTriggers="soc4"
+                           binding="#{ManagedBean.hcHolidayDescription}"
+                           filterFeatures="caseInsensitive">
+                  <af:inputText value="#{row.bindings.HolidayDescription.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.mandatory}"
+                                columns="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.displayWidth}"
+                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.precision}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.HolidayDescription.tooltip}"
+                                id="it5" readOnly="true">
+                    <f:validator binding="#{row.bindings.HolidayDescription.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="LastUpdatedBy" filterable="true"
+                           sortable="true"
+                           headerText="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.label}"
+                           id="c2" align="center" partialTriggers="soc4"
+                           binding="#{ManagedBean.hcLastUpdatedBy}"
+                           inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
+                           visible="false">
+                  <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.mandatory}"
+                                columns="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.displayWidth}"
+                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.precision}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.tooltip}"
+                                id="it4" readOnly="true">
+                    <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedBy.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="LastUpdatedDate" filterable="true"
+                           sortable="true"
+                           headerText="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.label}"
+                           id="c5" width="120" align="center"
+                           inlineStyle="#{row.bindings.WorkingStatus.attributeValue == 'Holiday' ?   'background-color:rgb(226,176,181)' :  'background-color: White'}"
+                           partialTriggers="soc4"
+                           binding="#{ManagedBean.hcLastUpdateDate}"
+                           visible="false">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.LastUpdatedDate}"
+                                  id="id3"/>
+                  </f:facet>
+                  <af:inputDate value="#{row.bindings.LastUpdatedDate.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.mandatory}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.tooltip}"
+                                id="id4" readOnly="true">
+                    <f:validator binding="#{row.bindings.LastUpdatedDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.WpHolidayCalendarVO1.hints.LastUpdatedDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="MonthId" filterable="true"
+                           sortable="true"
+                           headerText="#{bindings.WpHolidayCalendarVO1.hints.MonthId.label}"
+                           id="c1" visible="false">
+                  <af:inputText value="#{row.bindings.MonthId.inputValue}"
+                                label="#{bindings.WpHolidayCalendarVO1.hints.MonthId.label}"
+                                required="#{bindings.WpHolidayCalendarVO1.hints.MonthId.mandatory}"
+                                columns="#{bindings.WpHolidayCalendarVO1.hints.MonthId.displayWidth}"
+                                maximumLength="#{bindings.WpHolidayCalendarVO1.hints.MonthId.precision}"
+                                shortDesc="#{bindings.WpHolidayCalendarVO1.hints.MonthId.tooltip}"
+                                id="it3">
+                    <f:validator binding="#{row.bindings.MonthId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.WpHolidayCalendarVO1.hints.MonthId.format}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="top">
+            <af:panelGroupLayout layout="vertical"
+                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                 id="pgl1">
+              <af:panelHeader text="Stitching Planning -  Holiday Calendar - #{bindings.OrgName.inputValue}"
+                              id="ph1"
+                              inlineStyle="border-style:solid; border-width:thin; background-color:rgb(199,206,218); border-color:rgb(198,198,198); margin-bottom:2px; padding-bottom:5px; height:25.0px;">
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+              </af:panelHeader>
+              <af:panelFormLayout id="pfl1" rows="1" maxColumns="8"
+                                  inlineStyle="border-style:solid; border-width:thin; background-color:rgb(248,248,265); border-color:rgb(198,198,198); margin-bottom:2px; padding:3.0px;"
+                                  labelAlignment="start">
+                <af:selectOneChoice value="#{bindings.MonthName.inputValue}"
+                                    label="Month"
+                                    required="#{bindings.MonthName.hints.mandatory}"
+                                    shortDesc="#{bindings.MonthName.hints.tooltip}"
+                                    id="soc1" autoSubmit="true"
+                                    partialTriggers="cb1">
+                  <f:selectItems value="#{bindings.MonthName.items}" id="si2"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.Year.inputValue}"
+                                    label="Year"
+                                    required="#{bindings.Year.hints.mandatory}"
+                                    shortDesc="#{bindings.Year.hints.tooltip}"
+                                    id="soc2" autoSubmit="true"
+                                    valuePassThru="false"
+                                    partialTriggers="cb1">
+                  <f:selectItems value="#{bindings.Year.items}" id="si1"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{bindings.OrgId.inputValue}"
+                              label="Org Id"
+                              required="#{bindings.OrgId.hints.mandatory}"
+                              columns="#{bindings.OrgId.hints.displayWidth}"
+                              maximumLength="#{bindings.OrgId.hints.precision}"
+                              shortDesc="#{bindings.OrgId.hints.tooltip}"
+                              id="it2" readOnly="true" visible="false">
+                  <f:validator binding="#{bindings.OrgId.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+              <af:panelFormLayout id="pfl2" partialTriggers="soc1 soc2 cb1"
+                                  inlineStyle="border-style:solid; border-width:thin; background-color:rgb(248,248,265); border-color:rgb(198,198,198); margin-bottom:2px; padding:3.0px;"
+                                  rows="1" maxColumns="8">
+                <af:panelLabelAndMessage label="Weekly Holiday" id="plam4"
+                                         inlineStyle="border-style:solid; border-width:thin; background-color:rgb(248,248,265); border-color:rgb(198,198,198);">
+                  <af:selectOneChoice value="#{bindings.WeeklyHoliday.inputValue}"
+                                      required="#{bindings.WeeklyHoliday.hints.mandatory}"
+                                      shortDesc="#{bindings.WeeklyHoliday.hints.tooltip}"
+                                      id="soc3" autoSubmit="true"
+                                      disabled="false"
+                                      readOnly="#{bindings.OrgId.inputValue == &quot;344&quot;}">
+                    <f:selectItems value="#{bindings.WeeklyHoliday.items}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Total Days" id="plam3">
+                  <af:outputText value="#{bindings.NumberOfDays.inputValue}"
+                                 id="ot3" partialTriggers="soc3">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.NumberOfDays.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Working Days" id="plam2">
+                  <af:outputText value="#{bindings.NomberOfWorkingDays.inputValue}"
+                                 id="ot2" partialTriggers="soc3 t1:soc4">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.NomberOfWorkingDays.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Holidays" id="plam5">
+                  <af:outputText value="#{bindings.NumberOfHolidays.inputValue}"
+                                 id="ot4" partialTriggers="soc3 t1:soc4">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.NumberOfHolidays.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:spacer width="100" height="10" id="s1"/>
+                <af:commandButton actionListener="#{ManagedBean.save}"
+                                  text="Save" id="cb1" partialSubmit="true"
+                                  disabled="false"
+                                  icon="/icons/check_sign_icon_green.png"/>
+                <af:inputText value="#{bindings.MonthId.inputValue}"
+                              label="#{bindings.MonthId.hints.label}"
+                              required="#{bindings.MonthId.hints.mandatory}"
+                              columns="#{bindings.MonthId.hints.displayWidth}"
+                              maximumLength="#{bindings.MonthId.hints.precision}"
+                              shortDesc="#{bindings.MonthId.hints.tooltip}"
+                              id="it10" visible="false">
+                  <f:validator binding="#{bindings.MonthId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.MonthId.format}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

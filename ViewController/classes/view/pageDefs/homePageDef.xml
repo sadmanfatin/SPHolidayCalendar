@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="homePageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HolidayCalendarSearchVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="HolidayCalendarSearchVO1Iterator"/>
+    <invokeAction id="setSessionValue" Binds="setSessionValues"
+                  Refresh="always"/>
+    <iterator Binds="WpMonthListVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="WpMonthListVO1Iterator"/>
+    <iterator Binds="WpHolidayCalendarVO1" RangeSize="32"
+              DataControl="AppModuleDataControl"
+              id="WpHolidayCalendarVO1Iterator"/>
+    <searchRegion Binds="WpHolidayCalendarVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WpHolidayCalendarVO1Query"/>
+    <iterator Binds="OrgVO1" RangeSize="10" DataControl="AppModuleDataControl"
+              id="OrgVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="setSessionValues"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="setSessionValues"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue="#{viewScope.RespApplId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="HolidayCalendarSearchVO1Iterator" id="OrgId">
+      <AttrNames>
+        <Item Value="OrgId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HolidayCalendarSearchVO1Iterator" StaticList="false"
+          Uses="LOV_MonthName" id="MonthName" DTSupportsMRU="false"/>
+    <list IterBinding="HolidayCalendarSearchVO1Iterator" StaticList="false"
+          Uses="LOV_Year" id="Year" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="WpMonthListVO1Iterator" id="MonthId">
+      <AttrNames>
+        <Item Value="MonthId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="WpMonthListVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.WpMonthListVO1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="WpHolidayCalendarVO1Iterator" id="WpHolidayCalendarVO1">
+      <nodeDefinition DefName="model.view.WpHolidayCalendarVO"
+                      Name="WpHolidayCalendarVO10">
+        <AttrNames>
+          <Item Value="DayId"/>
+          <Item Value="Day"/>
+          <Item Value="HolidayDescription"/>
+          <Item Value="WorkingStatus"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="MonthId"/>
+          <Item Value="DayName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="WpMonthListVO1Iterator" StaticList="false"
+          Uses="LOV_WeeklyHoliday" id="WeeklyHoliday" DTSupportsMRU="true"/>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="WpMonthListVO1Iterator"
+                     id="NomberOfWorkingDays">
+      <AttrNames>
+        <Item Value="NomberOfWorkingDays"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WpMonthListVO1Iterator" id="NumberOfDays">
+      <AttrNames>
+        <Item Value="NumberOfDays"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WpMonthListVO1Iterator" id="NumberOfHolidays">
+      <AttrNames>
+        <Item Value="NumberOfHolidays"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgVO1Iterator" id="OrgName">
+      <AttrNames>
+        <Item Value="OrgName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

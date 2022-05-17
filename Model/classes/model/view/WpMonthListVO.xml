@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WpMonthListVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.view.WpMonthListVORowImpl"
+  ComponentClass="model.view.WpMonthListVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="DayLOV1"
+    ViewObjectName="model.lov.DayLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="UintWiseWeeklyHolidayLOV1"
+    ViewObjectName="model.lov.UintWiseWeeklyHolidayLOV">
+    <ParameterMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[OrgId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_WeeklyHoliday"
+    ListVOName="DayLOV1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="WeeklyHoliday"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Day"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Day"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT WpMonthListEO.MONTH_ID, 
+       WpMonthListEO.MONTH_NAME, 
+       WpMonthListEO.YEAR, 
+       WpMonthListEO.ORG_ID, 
+       WpMonthListEO.WEEKLY_HOLIDAY
+FROM SP_CALENDAR_H WpMonthListEO]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="WpMonthListEO"
+    Entity="model.entity.WpMonthListEO"/>
+  <ViewAttribute
+    Name="MonthId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MonthId"
+    EntityUsage="WpMonthListEO"
+    AliasName="MONTH_ID"/>
+  <ViewAttribute
+    Name="MonthName"
+    PrecisionRule="true"
+    EntityAttrName="MonthName"
+    EntityUsage="WpMonthListEO"
+    AliasName="MONTH_NAME"/>
+  <ViewAttribute
+    Name="Year"
+    PrecisionRule="true"
+    EntityAttrName="Year"
+    EntityUsage="WpMonthListEO"
+    AliasName="YEAR"/>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="WpMonthListEO"
+    AliasName="ORG_ID"/>
+  <ViewAttribute
+    Name="WeeklyHoliday"
+    PrecisionRule="true"
+    EntityAttrName="WeeklyHoliday"
+    EntityUsage="WpMonthListEO"
+    AliasName="WEEKLY_HOLIDAY"
+    LOVName="LOV_WeeklyHoliday">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NumberOfDays"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="NomberOfWorkingDays"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="NumberOfHolidays"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewLinkAccessor
+    Name="WpHolidayCalendarVO"
+    ViewLink="model.view.WpHolidayCalendarR01Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HolidayCalendarSearchVO"
+    ViewLink="model.view.HolidayCalendarSearchVO_vs_WpMonthListVO_vl"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>
