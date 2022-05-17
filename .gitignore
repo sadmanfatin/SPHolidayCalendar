@@ -11,8 +11,9 @@ Thumbs.db
 *.ear
 # Misc
 *.sso
-.data
-.jdb
+*.data
+*.jdb
+*.class
 # Unwanted directories
 classes/
 deploy/
